@@ -1,0 +1,443 @@
+﻿<!doctype html>
+<html class="no-js" lang="zh-CN">
+{% load static %}
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Favicon icon --> 
+<link rel="icon" type="image/png" sizes="16x16" href="{% static 'poetry/images/logo.png' %}">
+<link rel="stylesheet" href="{% static 'poetry/vendor/chartist/css/chartist.min.css' %}">
+						
+<link href="{% static 'poetry/vendor/bootstrap-select/dist/css/bootstrap-select.min.css' %}	" rel="stylesheet">
+<link href="{% static 'poetry/css/style.css' %}	" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+<!-- all css here -->
+<link rel="stylesheet" href="{% static 'poetry/css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'poetry/css/font-awesome.min.css' %}">
+<link rel="stylesheet" href="{% static 'poetry/css/magnific-popup.css' %}">
+<link rel="stylesheet" href="{% static 'poetry/css/slicknav.min.css' %}">
+<link rel="stylesheet" href="{% static 'poetry/css/swiper.min.css' %}">
+<link rel="stylesheet" href="{% static 'poetry/css/typography.css' %}">
+<link rel="stylesheet" href="{% static 'poetry/css/default-css.css' %}">
+<link rel="stylesheet" href="{% static 'poetry/css//styles.css' %}">
+<link rel="stylesheet" href="{% static 'poetry/css/responsive.css' %}">
+<!-- modernizr css -->
+
+<script src="{% static 'poetry/js/vendor/modernizr-2.8.3.min.js' %}"></script>
+</head>
+
+<body>
+<!--[if lt IE 8]>
+		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+<!-- preloader area start -->
+<!---<div id="preloader">
+	<div class="loader"></div>
+</div>--->
+<!-- prealoader area end -->
+<!-- header area start -->
+<header>
+	<div class="header-area tpheader-two">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-3">
+					<div class="logo">
+						<a href="index.html">		
+							<img src="{% static 'poetry/images/icon/logo-white.png' %}" alt="logo">
+						</a>
+					</div>
+				</div>
+				<div class="col-lg-9 d-none d-lg-block">
+					<div class="main-menu">
+						<nav id="nav_mobile_menu">
+							<ul id="navigation">
+								<li class="active">
+									<a href="#home">Home</a>
+								</li>
+								<li>
+									<a href="#about1">Great Poems No 1</a>
+								</li>
+								<li>
+									<a href="#about2">Great Poems No 2</a>
+								</li>
+								<li>
+									<a href="#about3">Great Poems No 3</a>
+								</li>
+								<li>
+									<a href="#about4">Great Poems No 4</a>
+								</li>
+								<li>
+									<a href="#about5">Great Poems No 5</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+				<div class="col-12 d-block d-lg-none">
+					<div id="mobile_menu"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+<!-- header area end -->
+<!-- hero area start -->
+<section class="game-hero-area full-height d-flex align-items-center" id="home">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 offset-md-1 text-center pos-rel">
+				<div class="hero-content">
+					<h2>Poetry World</h2>	
+					<span></span>
+				</div>
+				<form method="post" action="{% url 'check' %}"> 
+				{% csrf_token %}
+				<div class="input-group">
+					<input type="text" name="mykey" class="form-control" placeholder="Please enter the key" required />
+					
+				</div>
+				<div class="hero-content">
+					<span class="input-group-btn">
+						
+						<h2> <input type="submit" name="searchBtn" class="btn btn-outline-light btn-lg" value="Search" /></h2>
+					</span>
+				</div>
+				</form>
+			</div>
+			
+		</div>
+	</div>
+	<a href="#about" class="scrl_me_down">
+		<img src="{% static 'poetry/images/icon/angle-down-icon.png' %}" alt="icon">
+	</a>
+</section>
+<!-- hero area end -->
+<section class="abt3-area1 full-height2 d-flex align-items-center" id="about0">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-xl-12">
+				<div class="card">
+					<div class="card-body p-0">
+						<div class="table-responsive order-list card-table">
+							<table class="table items-table table-responsive-md">
+								<tbody>
+								<tr>
+									<th class="my-0 text-black font-w500 fs-20">标题</th>
+									<th style="width:10%;" class="my-0 text-black font-w500 fs-20">朝代</th>
+									<th class="my-0 text-black font-w500 fs-20 wspace-no d-md-none d-lg-table-cell">作者</th>
+									<th></th>
+								</tr>
+								<tr class="alert alert-dismissible border-0">
+									<td>
+										<div class="media">
+											<a href="#about1"><img class="mr-3 img-fluid rounded" width="85" src="{% static 'poetry/images/card/1.jpg' %}" alt="DexignZone"></a>
+											<div class="media-body">
+												<h4 class="my-0 text-black font-w600">{{poem_list.0.title}}</h4>
+												<h4 class="my-0 text-black font-w600"><a class="my-0 text-black font-w600" href="#about1"></a></h4>
+												<div class="star-review fs-14">
+													<i class="fa fa-star text-orange"></i>
+													<i class="fa fa-star text-orange"></i>
+													<i class="fa fa-star text-orange"></i>
+													<i class="fa fa-star text-gray"></i>
+													<i class="fa fa-star text-gray"></i>
+													<span class="ml-3 text-dark">(相关度 {{similarity.0}})</span>
+												</div>
+											</div>
+										</div>
+									</td>
+									<td>
+										<h4 class="my-0 text-black font-w600">{{poem_list.0.dynasty}}</h4>
+									</td>
+									
+									<td class="d-md-none d-lg-table-cell">
+										<h4 class="my-0 text-black font-w600">{{poem_list.0.poet}}</h4>
+									</td>
+									
+								</tr>
+								<tr class="alert alert-dismissible border-0">
+									<td>
+										<div class="media">
+											<a href="#about2"><img class="mr-3 img-fluid rounded" width="85" src="{% static 'poetry/images/card/2.jpg' %}" alt="DexignZone"></a>
+											<div class="media-body">
+												<h4 class="my-0 text-black font-w600">{{poem_list.1.title}}</h4>
+												<h4 class="my-0 text-black font-w600"><a class="my-0 text-black font-w600" href="#about2"></a></h4>
+												<div class="star-review fs-14">
+													<i class="fa fa-star text-orange"></i>
+													<i class="fa fa-star text-orange"></i>
+													<i class="fa fa-star text-orange"></i>
+													<i class="fa fa-star text-gray"></i>
+													<i class="fa fa-star text-gray"></i>
+													<span class="ml-3 text-dark">(相关度 {{similarity.1}})</span>
+												</div>
+											</div>
+										</div>
+									</td>
+									<td>
+										<h4 class="my-0 text-black font-w600">{{poem_list.1.dynasty}}</h4>
+									</td>
+									
+									<td class="d-md-none d-lg-table-cell">
+										<h4 class="my-0 text-black font-w600">{{poem_list.1.poet}}</h4>
+									</td>
+									
+								</tr>
+								<tr class="alert alert-dismissible border-0">
+									<td>
+										<div class="media">
+											<a href="#about3"><img class="mr-3 img-fluid rounded" width="85" src="{% static 'poetry/images/card/3.jpg' %}" alt="DexignZone"></a>
+											<div class="media-body">
+												<h4 class="my-0 text-black font-w600">{{poem_list.2.title}}</h4>
+												<h4 class="my-0 text-black font-w600"><a class="my-0 text-black font-w600" href="#about3"></a></h4>
+												<div class="star-review fs-14">
+													<i class="fa fa-star text-orange"></i>
+													<i class="fa fa-star text-orange"></i>
+													<i class="fa fa-star text-orange"></i>
+													<i class="fa fa-star text-gray"></i>
+													<i class="fa fa-star text-gray"></i>
+													<span class="ml-3 text-dark">(相关度 {{similarity.2}})</span>
+												</div>
+											</div>
+										</div>
+									</td>
+									<td>
+										<h4 class="my-0 text-black font-w600">{{poem_list.2.dynasty}}</h4>
+									</td>
+									
+									<td class="d-md-none d-lg-table-cell">
+										<h4 class="my-0 text-black font-w600">{{poem_list.2.poet}}</h4>
+									</td>
+									
+								</tr>
+								<tr class="alert alert-dismissible border-0">
+									<td>
+										<div class="media">
+											<a href="#about4"><img class="mr-3 img-fluid rounded" width="85" src="{% static 'poetry/images/card/4.jpg' %}" alt="DexignZone"></a>
+											<div class="media-body">
+												<h4 class="my-0 text-black font-w600">{{poem_list.3.title}}</h4>
+												<h4 class="my-0 text-black font-w600"><a class="my-0 text-black font-w600" href="#about4"></a></h4>
+												<div class="star-review fs-14">
+													<i class="fa fa-star text-orange"></i>
+													<i class="fa fa-star text-orange"></i>
+													<i class="fa fa-star text-orange"></i>
+													<i class="fa fa-star text-gray"></i>
+													<i class="fa fa-star text-gray"></i>
+													<span class="ml-3 text-dark">(相关度 {{similarity.3}})</span>
+												</div>
+											</div>
+										</div>
+									</td>
+									<td>
+										<h4 class="my-0 text-black font-w600">{{poem_list.3.dynasty}}</h4>
+									</td>
+									
+									<td class="d-md-none d-lg-table-cell">
+										<h4 class="my-0 text-black font-w600">{{poem_list.3.poet}}</h4>
+									</td>
+									
+								</tr>
+								<tr class="alert alert-dismissible border-0">
+									<td>
+										<div class="media">
+											<a href="#about5"><img class="mr-3 img-fluid rounded" width="85" src="{% static 'poetry/images/card/5.jpg' %}" alt="DexignZone"></a>
+											<div class="media-body">
+												<h4 class="my-0 text-black font-w600">{{poem_list.4.title}}</h4>
+												<h4 class="my-0 text-black font-w600"><a class="my-0 text-black font-w600" href="#about5"></a></h4>
+												<div class="star-review fs-14">
+													<i class="fa fa-star text-orange"></i>
+													<i class="fa fa-star text-orange"></i>
+													<i class="fa fa-star text-orange"></i>
+													<i class="fa fa-star text-gray"></i>
+													<i class="fa fa-star text-gray"></i>
+													<span class="ml-3 text-dark">(相关度 {{similarity.4}})</span>
+												</div>
+											</div>
+										</div>
+									</td>
+									<td>
+										<h4 class="my-0 text-black font-w600">{{poem_list.4.dynasty}}</h4>
+									</td>
+									
+									<td class="d-md-none d-lg-table-cell">
+										<h4 class="my-0 text-black font-w600">{{poem_list.4.poet}}</h4>
+									</td>
+									
+								</tr>		
+							</tbody></table>
+						</div>	
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-lg-4 offset-lg-1 d-none d-lg-block">
+				<div class="abt3-right-thumb">		
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- about area start -->
+<section class="abt3-area1 full-height d-flex align-items-center" id="about1">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-7">
+				<div class="abt3-content">
+					<span>{{poem_list.0.poet}} {{poem_list.0.dynasty}}</span>
+					<p><span>相关度 {{similarity.0}}</span></p>
+					<h2>{{poem_list.0.title}}</h2>
+					<p>{{result.0.0}}</p>
+					<p>{{result.0.1}}</p>
+					<p>{{result.0.2}}</p>
+					<p>{{result.0.3}}</p>
+				</div>
+			</div>
+			<div class="col-lg-4 offset-lg-1 d-none d-lg-block">
+				<div class="abt3-right-thumb">		
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- about area end -->
+<section class="abt3-area2 full-height d-flex align-items-center" id="about2">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-7">
+				<div class="abt3-content">
+					<span>{{poem_list.1.poet}} {{poem_list.1.dynasty}}</span>
+					<p><span>相关度 {{similarity.1}}</span></p>
+					<h2>{{poem_list.1.title}}</h2>
+					<p>{{result.1.0}}</p>
+					<p>{{result.1.1}}</p>
+					<p>{{result.1.2}}</p>
+					<p>{{result.1.3}}</p>
+				</div>
+			</div>
+			<div class="col-lg-4 offset-lg-1 d-none d-lg-block">
+				<div class="abt3-right-thumb">		
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- facts area start -->
+<section class="abt3-area3 full-height d-flex align-items-center" id="about3">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-7">
+				<div class="abt3-content">
+					<span>{{poem_list.2.poet}} {{poem_list.2.dynasty}}</span>
+					<p><span>相关度 {{similarity.2}}</span></p>
+					<h2>{{poem_list.1.title}}</h2>
+					<p>{{result.2.0}}</p>
+					<p>{{result.2.1}}</p>
+					<p>{{result.2.2}}</p>
+					<p>{{result.2.3}}</p>
+				</div>
+			</div>
+			<div class="col-lg-4 offset-lg-1 d-none d-lg-block">
+				<div class="abt3-right-thumb">
+					
+				
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- facts area end -->
+<!-- feature blog area start -->
+<section class="abt3-area4 full-height d-flex align-items-center" id="about4">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-7">
+				<div class="abt3-content">
+					<span>{{poem_list.3.poet}} {{poem_list.3.dynasty}}</span>
+					<p><span>相关度 {{similarity.3}}</span></p>
+					<h2>{{poem_list.3.title}}</h2>
+					<p>{{result.3.0}}</p>
+					<p>{{result.3.1}}</p>
+					<p>{{result.3.2}}</p>
+					<p>{{result.3.3}}</p>
+				</div>
+			</div>
+			<div class="col-lg-4 offset-lg-1 d-none d-lg-block">
+				<div class="abt3-right-thumb">
+					
+				
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- feature blog area end -->
+<!-- pricing area start -->
+<section class="abt3-area5 full-height d-flex align-items-center" id="about5">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-7">
+				<div class="abt3-content">
+					<span>{{poem_list.4.poet}} {{poem_list.4.dynasty}}</span>
+					<p><span>相关度 {{similarity.4}}</span></p>
+					<h2>{{poem_list.4.title}}</h2>
+					<p>{{result.4.0}}</p>
+					<p>{{result.4.1}}</p>
+					<p>{{result.4.2}}</p>
+					<p>{{result.4.3}}</p>
+				</div>
+			</div>
+			<div class="col-lg-4 offset-lg-1 d-none d-lg-block">
+				<div class="abt3-right-thumb">
+					
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- pricing area end -->
+<!-- contact area start -->
+<!-- contact area end -->
+
+<!-- footer area start -->
+<div class="footer-area ptb--50">
+	<div class="container">
+		<div class="footer-content">
+			<p>Copyright &copy; 2018.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+		</div>
+	</div>
+</div>
+<!-- footer area end -->
+
+<!-- jquery latest version -->
+
+<script src="{% static 'poetry/js/vendor/jquery-2.2.4.min.js' %}"></script>
+<!-- bootstrap 4 js -->
+<script src="{% static 'poetry/js/bootstrap.min.js' %}"></script>
+<!-- others plugins -->
+<script src="{% static 'poetry/js/jquery.slicknav.min.js' %}"></script>
+<script src="{% static 'poetry/js/counterup.min.js' %}"></script>
+<script src="{% static 'poetry/js/waypoints.js' %}"></script>
+<script src="{% static 'poetry/js/imagesloaded.pkgd.min.js' %}"></script>
+<script src="{% static 'poetry/js/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'poetry/js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'poetry/js/countdown.js' %}"></script>
+<script src="{% static 'poetry/js/swiper.min.js' %}"></script>
+<script src="{% static 'poetry/js/plugins.js' %}"></script>
+<script src="{% static 'poetry/js/jquery.zoomslider.min.js' %}"></script>
+<script src="{% static 'poetry/js/jquery.firefly.js' %}"></script>
+<!-- google map -->
+<!---<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBO_5h890WNShs_YLGivCBfs2U89qXR-7Y&callback=initMap"></script>--->
+<script src="{% static 'poetry/js/scripts.js' %}"></script>
+
+<!-- Required vendors --> 
+
+<script src="{% static 'poetry/vendor/global/global.min.js' %}"></script>
+<script src="{% static 'poetry/vendor/bootstrap-select/dist/js/bootstrap-select.min.js' %}"></script>
+<script src="{% static 'poetry/vendor/chart.js/Chart.bundle.min.js' %}"></script>
+<script src="{% static 'poetry/js/custom.min.js' %}"></script>
+<script src="{% static 'poetry/js/deznav-init.js' %}"></script>
+</body>
+
+</html>
